@@ -28,9 +28,10 @@ const recuperaApi = async() => {
 
     beers.forEach(element => {
       console.log(element)
-      
-         ordine.appendchild('li').innerHTML = element.name
-         ordine.appendchild('li').innerHTML = element.imageURL
+      const list = document.createElement('li');
+
+
+         
     });
 
 

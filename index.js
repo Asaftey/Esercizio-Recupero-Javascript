@@ -15,10 +15,6 @@ Punk API: Brewdog's DIY Dog as an API
 Brewdog's DIY Dog as a searchable, filterable API
  */
 
-const ordine = document.getElementsByTagName('ol');
-const list = document.getElementsByTagName('li')
-
-
 const recuperaApi = async() => {
     const response = await fetch('https://api.punkapi.com/v2/beers')
     const data = await response.json();
@@ -28,14 +24,30 @@ const recuperaApi = async() => {
 
     beers.forEach(element => {
       console.log(element)
-      const list = document.createElement('li');
+      const name = document.createElement('p')
+      name.textContent = `${element.name}`
+      document.body.appendChild(name)
 
 
-         
+      const data = document.createElement('p')
+      data.textContent = `${element.first_brewed}`
+      document.body.appendChild(data)
+
+      const description = document.createElement('p')
+      description.textContent = `${element.description}`
+      document.body.appendChild(description)
+
+      const img = document.createElement('img')
+      img.src = `${element.image_url}`
+      document.body.appendChild(img)
+
+      const btn = document.createElement('button')
+      btn.textContent = 'Delete'
+      document.body.appendChild(btn)
+      btn.addEventListener('click', () => {
+      document.body.remove()
+      });
     });
-
-
-
-
-    }
+ }
 recuperaApi()
+
